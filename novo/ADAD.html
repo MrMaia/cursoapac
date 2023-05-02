@@ -1,3 +1,41 @@
+<!-- <?php
+$host = 'localhost'; //endereço do servidor do banco de dados
+$dbname = 'nome_do_banco_de_dados'; //nome do banco de dados
+$username = 'seu_nome_de_usuario'; //nome de usuário do banco de dados
+$password = 'sua_senha'; //senha do banco de dados
+
+try {
+  $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+  echo 'Erro ao conectar ao banco de dados: ' . $e->getMessage();
+  exit();
+}
+?>
+
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  //recuperar os dados do formulário
+  $nome = $_POST['nome'];
+  $senha = $_POST['senha'];
+  $telefone = $_POST['telefone'];
+  $permissao = $_POST['permissao'];
+
+  //inserir os dados no banco de dados
+  $stmt = $pdo->prepare('INSERT INTO nome_da_tabela (nome, senha, telefone, permissao) VALUES (?, ?, ?, ?)');
+  $stmt->execute([$nome, $senha, $telefone, $permissao]);
+}
+?>
+
+
+-->
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -15,20 +53,134 @@
     <div class="bloco1 bg-info p-5">
         <h3 class="mb-5">Configurações de Usuários</h3>
         <div class="d-flex flex-column gap-3">
-            <button type="button" class="btn btn-primary">Criar Usuário</button>
-            <button type="button" class="btn btn-primary">Listar/Editar Usuário</button>
-            <button type="button" class="btn btn-primary">Remover Usuário</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mcu">Criar Usuário</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mleu">Listar/Editar Usuário</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mru">Remover Usuário</button>
         </div>
     </div>
     <div class="bloco2 p-5 bg-info">
         <h3 class="mb-5">Configurações de Dados</h3>
         <div class="d-flex flex-column gap-3">
-            <button type="button" class="btn btn-primary">Listar Dados</button>
-            <button type="button" class="btn btn-primary">Listar Arquivos (.csv)</button>
-            <button type="button" class="btn btn-primary">Excluir Dados</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mld">Listar Dados</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mla">Listar Arquivos (.csv)</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#med">Excluir Dados</button>
         </div>
     </div>
 </div>
+
+<!-- Modal Criar Usuário -->
+<div class="modal fade" id="mcu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Criar Usuário</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Modal Criar Usuário
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- Modal Listar/Editar Usuários -->
+<div class="modal fade" id="mleu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Modal Listar/Editar Usuários
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- Modal Remover Usuários -->
+<div class="modal fade" id="mru" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Modal Remover Usuários
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<!-- Modal Listar Dados -->
+<div class="modal fade" id="mld" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Modal Listar Dados
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- Modal Listar Arquivos (.CSV) -->
+<div class="modal fade" id="mla" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            Modal Listar Arquivos (.CSV)
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- Modal Excluir Dados -->
+<div class="modal fade" id="med" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Modal Excluir Dados
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
 
 
 
