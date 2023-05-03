@@ -1,25 +1,3 @@
-<?php
-$login = $_POST['user_id'];
-$entrar = $_POST['entrar'];
-$senha = md5($_POST['user_pass']);
-$connect = mysql_connect('localhost','','');
-$db = mysql_select_db('autoapac');
-  if (isset($entrar)) {
-
-    $verifica = mysql_query("SELECT * FROM usuarios WHERE login =
-    '$login' AND senha = '$senha'") or die("erro ao selecionar");
-      if (mysql_num_rows($verifica)<=0){
-        echo"<script language='javascript' type='text/javascript'>
-        alert('Login e/ou senha incorretos');window.location
-        .href='login.html';</script>";
-        die();
-      }else{
-        setcookie("login",$login);
-        header("Location:index.php");
-      }
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
