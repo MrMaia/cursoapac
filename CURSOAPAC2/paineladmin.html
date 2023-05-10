@@ -77,11 +77,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Modal Criar Usuário
+          <form>
+            <div class="mb-3">
+              <label for="campoemail" class="form-label">Nome Completo</label>
+              <input type="email" class="form-control" id="campoemail" required> <!--DEIXAR OBRIGATÓRIO BACKEND-->
+            </div>
+            <div class="mb-3">
+              <label for="camposenha" class="form-label">Senha</label>
+              <input type="password" class="form-control" id="camposenha" required> <!--DEIXAR OBRIGATÓRIO BACKEND-->
+            </div>
+            <div class="mb-3">
+              <label for="camposenhar" class="form-label">Repita a Senha</label>
+              <input type="password" class="form-control" id="camposenhar" required> <!--DEIXAR OBRIGATÓRIO BACKEND-->
+            </div>
+            <div class="mb-3">
+              <label for="campotelefone" class="form-label">Telefone</label>
+              <input type="tel" class="form-control" id="campotelefone" required> <!--DEIXAR OBRIGATÓRIO BACKEND-->
+            </div>
+            <div class="mb-3">
+              <select class="form-select" required> <!--DEIXAR OBRIGATÓRIO BACKEND-->
+                <option selected>Selecione o Setor</option>
+                <option value="1">Nível do Rio</option>
+                <option value="2">Volume da Chuva</option>
+                <option value="3">Nível do Reservatório</option>
+                <option value="3">Todas</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <select class="form-select" required> <!--DEIXAR OBRIGATÓRIO BACKEND-->
+                <option selected>Selecione a Estação</option>
+                <option value="1">Nível do Rio</option>
+                <option value="2">Volume da Chuva</option>
+                <option value="3">Nível do Reservatório</option>
+                <option value="3">Todas</option>
+              </select>
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-primary">Criar</button>
+          <button type="submit" class="btn btn-primary">Criar</button>
         </div>
       </div>
     </div>
